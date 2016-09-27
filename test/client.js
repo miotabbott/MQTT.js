@@ -461,6 +461,8 @@ describe('MqttClient', function () {
         this.emit('client', client)
       }).listen(port + 47)
 
+      client.publish('topic', 'data', { qos: 1 })
+
       server2.on('client', function (c) {
         client.publish('topic', 'data', { qos: 1 }, function () {
           done()
